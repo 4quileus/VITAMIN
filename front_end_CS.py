@@ -1,3 +1,4 @@
+from io import StringIO
 import string
 import time
 
@@ -9,6 +10,7 @@ import streamlit as st
 # from logics.OL import OL
 # from logics.OATL import OATL
 # from logics.NatATL import *
+from Vitamin_Converter import initialisation, to_cgs, writting
 from back_end_CS import *
 import os
 from vitamin_model_checker.models import *
@@ -820,6 +822,19 @@ def display_MS(page):
       (st.session_state.info_model).append([Logic,formula])
       st.session_state.cmpt_model=7
       #st.experimental_rerun()
+  elif page==6:
+    file = st.file_uploader('graph to translate', "xml", False, help = "The xml file describing the Mulval graph you want to translate into a Vitamin file")
+    choosing_conditions = st.toggle("Chosing deactivable condition")
+    if choosing_conditions:
+      if file == None:
+        st.error("You didn't put any graph to translate yet")
+      else:
+        (transitions, attaques, condition) = initialisation(StringIO(file.getvalue().decode("utf-8")))
+        conditions = st.multiselect("Select deactivable conditions", list, condition)
+        converting = st.toggle("converting the graph")
+        if converting:
+          res = to_cgs(file, conditions)
+          st.download_button("Vitamin_graph", res)  
   else:
       xml = upload_xml_file_handler()
       

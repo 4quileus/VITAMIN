@@ -36,7 +36,7 @@ def img_to_bytes(img_path):
 def display_page(page):
   if page==2:
     display_MCMAS()
-  elif page == 0 or page==3 or page==4 or page==5:
+  elif page == 0 or page==3 or page==4 or page==5 or page==6:
     # ms_steps = st.selectbox(' ', ['01 - Create MAS', '02 - Upload File'])
     display_MS(page)
   else:
@@ -44,6 +44,7 @@ def display_page(page):
                                         '02 - Strategy Example', '03 - ICGS','04 - Dining Cryptographers',
                                         '05 - Buchi  Automaton', '06 - Upload Configuration'])
     display_case(nlp_steps)
+
 
 ### Main Front
 
@@ -114,6 +115,10 @@ def main():
     st.sidebar.markdown("---")
     if st.sidebar.button("0 - Guide"):
        st.session_state.page=0
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("Translation of Mulval attack graph to Vitamin readable file")
+    if st.sidebar.button("Launch"):
+       st.session_state.page=6
     st.sidebar.markdown("---")
     st.sidebar.markdown("Formal Verification of MAS")
     st.sidebar.header("Who are you?")
