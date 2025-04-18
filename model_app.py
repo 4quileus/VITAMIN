@@ -5,6 +5,8 @@ from pathlib import Path
 import base64
 import numpy as np
 
+import graphviz
+
 from PIL import Image, ImageDraw, ImageFont
 from htbuilder import HtmlElement, div, ul, li, br, hr, a, p, img, styles, classes, fonts
 from htbuilder.units import percent, px
