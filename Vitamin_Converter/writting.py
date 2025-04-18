@@ -4,13 +4,13 @@
 from Vitamin_Converter import to_cgs
 
 
-def writting(input, file, file_cond, Objectif_attaque):
+def writting(matrix, attacks, condition, file, file_cond, Objectif_attaque):
 
 
     #result transition is of no use, but can serve in net improvments of the program
 
 
-    (result_state, result_transition) = to_cgs.to_cgs(input, file_cond)
+    (result_state, result_transition) = to_cgs.to_cgs(matrix, attacks, condition, file_cond)
 
 
     fichier = open(file+"_Vitamin.txt", "w")
@@ -170,6 +170,9 @@ def writting(input, file, file_cond, Objectif_attaque):
 
 
     fichier.close()
+
+
+    return(file+"_Vitamin.txt")
 
 
     

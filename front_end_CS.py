@@ -829,12 +829,16 @@ def display_MS(page):
       if file == None:
         st.error("You didn't put any graph to translate yet")
       else:
-        (transitions, attaques, condition) = initialisation(StringIO(file.getvalue().decode("utf-8")))
-        conditions = st.multiselect("Select deactivable conditions", list, condition)
-        converting = st.toggle("converting the graph")
-        if converting:
-          res = to_cgs(file, conditions)
-          st.download_button("Vitamin_graph", res)  
+        file_name=file.name
+        (transitions, attaques, condition) = initialisation.initialisation(file)
+        deactivable_conditions = st.multiselect("Select deactivable conditions", [x.fact for x in condition])
+        goal = st.toggle("Chosing goals conditions")
+        if goal:
+          goal_conditions = st.multiselect("Select goals conditions", [x.fact for x in condition])
+          converting = st.toggle("converting the graph")
+          if converting:
+            res = writting.writting(transitions, attaques, condition, file_name, deactivable_conditions, goal_conditions)
+            st.download_button("Vitamin_graph", res.read())  
   else:
       xml = upload_xml_file_handler()
       

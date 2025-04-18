@@ -92,7 +92,7 @@ def initialisation(file):
     for noeud in node:
 
 
-        #AND noes are nodes representing the attacks
+        #AND nodes are nodes representing the attacks
 
 
         if noeud.type == 'AND':

@@ -75,19 +75,16 @@ def recupere_cond (file_cond):
             
 
 
-def to_cgs(file, file_cond):
+def to_cgs(matrix, attacks, condition, cond_deactiv):
 
 
     #We get the list of all the conditions that can be temporarly deactevated
 
 
-    cond_deactiv = recupere_cond(file_cond)
+    #cond_deactiv = recupere_cond(file_cond)
 
 
     #We get the data on the hypergraph computed from the xml
-
-
-    (matrix, attacks, condition) = initialisation(file)
 
 
     nb_state_graph = len(matrix)
