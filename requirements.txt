@@ -50,7 +50,6 @@ jupyterlab==3.4.7
 jupyterlab-pygments==0.2.2
 jupyterlab_server==2.15.1
 kiwisolver==1.4.4
-lxml==4.9.1
 MarkupSafe==2.1.2
 matplotlib==3.6.0
 matplotlib-inline==0.1.6
