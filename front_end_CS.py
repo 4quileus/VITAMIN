@@ -838,7 +838,7 @@ def display_MS(page):
           converting = st.toggle("converting the graph")
           if converting:
             res = writting.writting(transitions, attaques, condition, file_name, deactivable_conditions, goal_conditions)
-            st.download_button("Vitamin_graph", res.read())  
+            st.download_button("Vitamin_graph", data=file, file_name= res)  
   else:
       xml = upload_xml_file_handler()
       
