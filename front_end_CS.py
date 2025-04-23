@@ -829,7 +829,8 @@ def display_MS(page):
       if file == None:
         st.error("You didn't put any graph to translate yet")
       else:
-        file_name=file.name
+        #since we require from the uploader that the input file is an .xml file, we can remove this extension name from the file name
+        file_name=file.name.replace('.xml', '')
         (transitions, attaques, condition) = initialisation.initialisation(file)
         deactivable_conditions = st.multiselect("Select deactivable conditions", [x.fact for x in condition])
         goal = st.toggle("Chosing goals conditions")
@@ -837,8 +838,9 @@ def display_MS(page):
           goal_conditions = st.multiselect("Select goals conditions", [x.fact for x in condition])
           converting = st.toggle("converting the graph")
           if converting:
-            res = writting.writting(transitions, attaques, condition, file_name, deactivable_conditions, goal_conditions)
-            st.download_button("Vitamin_graph", data=file, file_name= res)  
+            (res) = writting.writting(transitions, attaques, condition, file_name, deactivable_conditions, goal_conditions)
+            with open(res, "rb") as file_res:
+              st.download_button("Vitamin_graph", data=file_res, file_name= res)  
   else:
       xml = upload_xml_file_handler()
       
